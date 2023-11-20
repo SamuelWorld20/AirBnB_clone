@@ -15,6 +15,8 @@ from models.base_model import BaseModel
 from models import storage
 """define class"""
 
+<<<<<<< HEAD
+=======
 def parse(arg):
     curly_braces = re.search(r"\{(.*?)\}", arg)
     brackets = re.search(r"\[(.*?)\]", arg)
@@ -31,6 +33,7 @@ def parse(arg):
         retl = [i.strip(",") for i in lexer]
         retl.append(curly_braces.group())
         return retl
+>>>>>>> cac35d3f9b5443870432f5dbe43d2bedfc867b11
 
 class HBNBCommand(cmd.Cmd):
     """assign value to prompt"""
@@ -61,11 +64,17 @@ class HBNBCommand(cmd.Cmd):
             new_instance = BaseModel()
             new_instance.save()
             print(new_instance.id)
-            
+
     def do_show(self, args):
+<<<<<<< HEAD
+        """Prints the string rep of instance"""
+        argss = args.split()
+        if not args:
+=======
        """Prints the string representation of an instance"""
        argss = args.split()
        if not args:
+>>>>>>> cac35d3f9b5443870432f5dbe43d2bedfc867b11
             print("** class name missing **")
        elif argss[0] != "BaseModel" and argss[0] != "User":
             print("** class doesn't exist **")
@@ -95,6 +104,20 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** no instance found **")
 
+<<<<<<< HEAD
+    def do_all(self, args):
+        """Prints all string rep of all instances"""
+        argss = args.split()
+        if not args:
+            print([str(value) for value in storage.all().values()])
+        elif argss[0] in globals() and hasattr(globals()[argss[0]], 'all'):
+            class_name = argss[0]
+            instances = globals()[class_name].all()
+            print([str(instance) for instance in instances])
+        else:
+            print("** class doesn't exist **")
+
+=======
     def do_all(self, arg):
         """Prints all string representations of instances."""
         words = arg.split()
@@ -116,6 +139,7 @@ class HBNBCommand(cmd.Cmd):
 
         print(all_list)
     
+>>>>>>> cac35d3f9b5443870432f5dbe43d2bedfc867b11
     def do_update(self, args):
         """update an instance based on the class name and id"""
         argss = args.split()
@@ -137,6 +161,8 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** no instance found **")
 
+<<<<<<< HEAD
+=======
     def do_count(self, arg):
         argl = parse(arg)
         count = 0
@@ -199,6 +225,7 @@ class HBNBCommand(cmd.Cmd):
         self.exec_cls_cmd('Amenity', arg)
     def do_Review(self, arg):
         self.exec_cls_cmd('Review', arg)
+>>>>>>> cac35d3f9b5443870432f5dbe43d2bedfc867b11
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
